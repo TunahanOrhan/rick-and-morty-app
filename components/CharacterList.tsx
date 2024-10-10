@@ -27,39 +27,52 @@ export default async function CharacterList({
       </div>
 
       <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 p-4">
-        {characters.results.map((character: any) => (
-          <Card
-            key={character.id}
-            className="border-none max-w-96 rounded-lg hover:scale-105 transform transition duration-300 ease-in-out bg-[#F0E14A]"
-          >
-            <img
-              src={character.image}
-              alt={character.name}
-              className="w-full rounded-t-lg"
-            />
-            <div className="p-2">
-              <div className="flex items-center">
-                <h1 className="text-lg font-semibold">{character.name}</h1>
-                <span className="ml-auto font-normal">{character.gender}</span>
-              </div>
-              <div className="flex flex-col">
-                <div
-                  className={`${
-                    character.status == "Alive"
-                      ? "text-green-500" : character.status == "Dead" ? "text-red-500"
-                      : "text-gray-500"
-                  } capitalize`}
-                >
-                  {character.status}
+        {characters.results.map(
+          (character: {
+            id: number;
+            name: string;
+            image: string;
+            gender: string;
+            status: string;
+            type: string;
+          }) => (
+            <Card
+              key={character.id}
+              className="border-none max-w-96 rounded-lg hover:scale-105 transform transition duration-300 ease-in-out bg-[#F0E14A]"
+            >
+              <img
+                src={character.image}
+                alt={character.name}
+                className="w-full rounded-t-lg"
+              />
+              <div className="p-2">
+                <div className="flex items-center">
+                  <h1 className="text-lg font-semibold">{character.name}</h1>
+                  <span className="ml-auto font-normal">
+                    {character.gender}
+                  </span>
                 </div>
-                <div>
-                  <span className="font-semibold capitalize">Type: </span>
-                  {character.type ? character.type : "Unknown"}
+                <div className="flex flex-col">
+                  <div
+                    className={`${
+                      character.status == "Alive"
+                        ? "text-green-500"
+                        : character.status == "Dead"
+                        ? "text-red-500"
+                        : "text-gray-500"
+                    } capitalize`}
+                  >
+                    {character.status}
+                  </div>
+                  <div>
+                    <span className="font-semibold capitalize">Type: </span>
+                    {character.type ? character.type : "Unknown"}
+                  </div>
                 </div>
               </div>
-            </div>
-          </Card>
-        ))}
+            </Card>
+          )
+        )}
       </div>
       <div className="p-6">
         <PaginationWithLinks

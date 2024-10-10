@@ -52,7 +52,7 @@ export function PaginationWithLinks({
 }: PaginationWithLinksProps) {
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const searchParams: URLSearchParams | undefined = useSearchParams();
 
   const totalPageCount = Math.ceil(totalCount / pageSize);
 
