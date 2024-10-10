@@ -4,8 +4,8 @@ interface HomeProps {
   searchParams: { [key: string]: string | undefined };
 }
 
-export async function Home({ searchParams }: HomeProps) {
+const Home = ({ searchParams }: HomeProps) => {
   return <CharacterList searchParams={searchParams} />;
-}
+};
 
 export default Home;
